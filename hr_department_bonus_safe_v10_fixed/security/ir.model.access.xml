@@ -1,0 +1,39 @@
+
+<odoo>
+    <record id="access_hr_bonus_type_user" model="ir.model.access">
+        <field name="name">access.hr.bonus.type.user</field>
+        <field name="model_id" ref="model_hr_bonus_type"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="access_hr_bonus_type_hr" model="ir.model.access">
+        <field name="name">access.hr.bonus.type.hr</field>
+        <field name="model_id" ref="model_hr_bonus_type"/>
+        <field name="group_id" ref="hr.group_hr_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+    <record id="access_hr_bonus_request_employee" model="ir.model.access">
+        <field name="name">access.hr.bonus.request.employee</field>
+        <field name="model_id" ref="model_hr_bonus_request"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="access_hr_bonus_request_hr" model="ir.model.access">
+        <field name="name">access.hr.bonus.request.hr</field>
+        <field name="model_id" ref="model_hr_bonus_request"/>
+        <field name="group_id" ref="hr.group_hr_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>

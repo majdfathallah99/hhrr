@@ -1,0 +1,16 @@
+
+<odoo>
+    <record id="mail_template_bonus_to_approve" model="mail.template">
+        <field name="name">Bonus Request - To Approve</field>
+        <field name="model_id" ref="model_hr_bonus_request"/>
+        <field name="subject">Bonus request ${object.name} to approve</field>
+        <field name="email_from">${(object.company_id.email or 'noreply@example.com')|safe}</field>
+        <field name="email_to">${object.employee_id.parent_id.user_id.partner_id.email or ''}</field>
+        <field name="body_html"><![CDATA[
+            <p>Hello,</p>
+            <p>A bonus request <b>${object.name}</b> for ${object.employee_id.name} is awaiting your approval.</p>
+            <p>Amount: ${format_amount(object.amount, object.currency_id)}</p>
+        ]]></field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>

@@ -1,0 +1,40 @@
+
+<odoo>
+    <record id="view_hr_bonus_type_tree" model="ir.ui.view">
+        <field name="name">hr.bonus.type.tree</field>
+        <field name="model">hr.bonus.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="amount_type"/>
+                <field name="percent_of_wage"/>
+                <field name="amount_fixed"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hr_bonus_type_form" model="ir.ui.view">
+        <field name="name">hr.bonus.type.form</field>
+        <field name="model">hr.bonus.type</field>
+        <field name="arch" type="xml">
+            <form string="Bonus Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="amount_type"/>
+                <field name="percent_of_wage"/>
+                        <field name="amount_fixed" invisible="[['amount_type','!=','fixed']]"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hr_bonus_type" model="ir.actions.act_window">
+        <field name="name">Bonus Types</field>
+        <field name="res_model">hr.bonus.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+
+<odoo>
+  <record id="seq_hr_bonus_request" model="ir.sequence">
+    <field name="name">Bonus Request</field>
+    <field name="code">hr.bonus.request</field>
+    <field name="prefix">BONUS/%(year)s/</field>
+    <field name="padding">4</field>
+    <field name="company_id" eval="False"/>
+  </record>
+</odoo>

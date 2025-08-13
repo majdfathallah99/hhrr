@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_department_bonus_root"
+              name="Bonuses"
+              sequence="1"
+              web_icon="hr_department_bonus_safe_v10/static/description/icon.png"/>
+    
+    <menuitem id="menu_department_bonus_requests"
+              name="Bonus Requests"
+              parent="menu_department_bonus_root"
+              action="action_hr_bonus_request"/>
+
+    <menuitem id="menu_department_bonus_types"
+              name="Bonus Types"
+              parent="menu_department_bonus_root"
+              action="action_hr_bonus_type"/>
+</odoo>

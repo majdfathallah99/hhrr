@@ -8,7 +8,7 @@
     "author": "ChatGPT",
     "website": "https://example.com",
     "license": "LGPL-3",
-    "depends": ["hr", "mail"],  # Payroll is optional; integration auto-detects
+    "depends": ["hr", "mail", "hr_payroll"],  # Payroll is optional; integration auto-detects
     "data": [
         "data/hr_department_bonus_sequence.xml",
         "security/hr_department_bonus_security.xml",

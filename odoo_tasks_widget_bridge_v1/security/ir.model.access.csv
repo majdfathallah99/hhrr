@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_res_users_widget_token,res.users.widget.token,base.model_res_users,,1,0,0,0

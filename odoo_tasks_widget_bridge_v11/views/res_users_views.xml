@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_users_form_inherit_task_widget_token" model="ir.ui.view">
+            <field name="name">res.users.form.task.widget.token</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook" position="inside">
+                    <page string="Task Widget API" name="task_widget_api" groups="base.group_system">
+                        <group>
+                            <field name="task_widget_token" readonly="1"/>
+                            <button name="action_generate_task_widget_token"
+                                    type="object"
+                                    class="oe_highlight"
+                                    string="Generate / Reset Token"/>
+                            <div class="o_form_label text-muted">
+                                Keep this token secret. Use it with Authorization: Bearer &lt;token&gt;
+                            </div>
+                            <div class="text-muted" style="margin-top:8px;">
+                                Saved tasks sync automatically (supports multi-assignees).
+                            </div>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

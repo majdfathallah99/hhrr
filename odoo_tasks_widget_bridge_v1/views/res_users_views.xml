@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Add token field and a generate button on res.users form (visible to Administrators) -->
+        <record id="view_users_form_inherit_task_widget_token" model="ir.ui.view">
+            <field name="name">res.users.form.task.widget.token</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//group[@name="technical"]' position="inside">
+                    <group string="Task Widget API" attrs="{'invisible': [('share','=',True)]}">
+                        <field name="task_widget_token" groups="base.group_system" readonly="1"/>
+                        <button name="action_generate_task_widget_token"
+                                type="object"
+                                class="oe_highlight"
+                                string="Generate / Reset Token"
+                                groups="base.group_system"/>
+                        <label string="Keep this token secret. Use it with Authorization: Bearer &lt;token&gt;"
+                               groups="base.group_system"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

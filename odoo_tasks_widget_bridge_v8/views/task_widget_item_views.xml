@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_task_widget_item_tree" model="ir.ui.view">
+    <field name="name">task.widget.item.tree</field>
+    <field name="model">task.widget.item</field>
+    <field name="arch" type="xml">
+      <tree sample="1" create="false">
+        <field name="name"/>
+        <field name="project_name"/>
+        <field name="stage_name"/>
+        <field name="date_deadline"/>
+        <field name="is_overdue"/>
+        <field name="kanban_state"/>
+        <field name="priority"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_task_widget_item_form" model="ir.ui.view">
+    <field name="name">task.widget.item.form</field>
+    <field name="model">task.widget.item</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="task_id" readonly="1"/>
+            <field name="owner_id" readonly="1"/>
+            <field name="project_name" readonly="1"/>
+            <field name="stage_name" readonly="1"/>
+            <field name="date_deadline" readonly="1"/>
+            <field name="is_overdue" readonly="1"/>
+            <field name="kanban_state" readonly="1"/>
+            <field name="priority" readonly="1"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_task_widget_item_search" model="ir.ui.view">
+    <field name="name">task.widget.item.search</field>
+    <field name="model">task.widget.item</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        <filter string="My Saved" name="my_saved" domain="[('owner_id','=',uid)]"/>
+        <filter string="Overdue" name="overdue" domain="[('is_overdue','=',True)]"/>
+        <field name="project_name"/>
+        <field name="stage_name"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_task_widget_saved_items" model="ir.actions.act_window">
+    <field name="name">Saved Tasks</field>
+    <field name="res_model">task.widget.item</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('owner_id','=',uid)]</field>
+    <field name="search_view_id" ref="view_task_widget_item_search"/>
+    <field name="context">{'search_default_my_saved': 1}</field>
+  </record>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <menuitem id="menu_task_widget_root"
+              name="Task Widget"
+              sequence="15"
+              groups="base.group_user"/>
+    <menuitem id="menu_task_widget_saved_items"
+              name="My Saved Tasks"
+              parent="menu_task_widget_root"
+              action="action_task_widget_saved_items"
+              sequence="10"
+              groups="base.group_user"/>
+  </data>
+</odoo>

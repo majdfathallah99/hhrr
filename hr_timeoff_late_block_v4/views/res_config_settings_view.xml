@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Employees → Configuration → Settings -->
+    <record id="res_config_settings_view_form_inherit_timeoff_lateblock" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.timeoff.lateblock</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Robust placement: add a block at the end of the sheet so it shows on the Employees Settings page -->
+            <xpath expr="//form/sheet" position="inside">
+                <div class="app_settings_block" string="Time Off Policy" data-string="Time Off Policy">
+                    <h2>Time Off Policy</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <label for="restrict_late_timeoff_submission"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <field name="restrict_late_timeoff_submission"/>
+                                <div class="text-muted">
+                                    Block Time Off submissions more than 2 days after the leave start date.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

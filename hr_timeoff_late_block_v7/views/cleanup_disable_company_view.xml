@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="0">
-    <!-- Deactivate the company form inherited view created by earlier versions -->
-    <record id="view_company_form_inherit_timeoff_lateblock" model="ir.ui.view">
-        <field name="active">False</field>
-    </record>
-</odoo>

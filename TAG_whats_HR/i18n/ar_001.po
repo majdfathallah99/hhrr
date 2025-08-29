@@ -1,0 +1,217 @@
+#. module: TAG_whats_HR
+#: model:ir.ui.menu,name:TAG_whats_HR.adv_root_menu
+msgid "Adv Notifications"
+msgstr "إشعارات متقدمة"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__attempts
+msgid "Attempts"
+msgstr "عدد المحاولات"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__body
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.adv_whatsapp_out_treeview
+msgid "Body"
+msgstr "نص الرسالة"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__create_uid
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__create_uid
+msgid "Created by"
+msgstr "تم الإنشاء بواسطة"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__create_date
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__create_date
+msgid "Created on"
+msgstr "تاريخ الإنشاء"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__display_name
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields.selection,name:TAG_whats_HR.selection__adv_whatsapp_out__status__failed
+msgid "Failed"
+msgstr "فشل"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__id
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__last_error
+msgid "Last Error"
+msgstr "آخر خطأ"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__write_uid
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__write_uid
+msgid "Last Updated by"
+msgstr "آخر تعديل بواسطة"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__write_date
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__write_date
+msgid "Last Updated on"
+msgstr "تاريخ آخر تعديل"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.adv_whatsapp_out_treeview
+msgid "Last error"
+msgstr "آخر خطأ"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__media
+msgid "Media File"
+msgstr "ملف وسائط"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__media_filename
+msgid "Media Filename"
+msgstr "اسم ملف الوسائط"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields.selection,name:TAG_whats_HR.selection__adv_whatsapp_out__type__media
+msgid "Media Message"
+msgstr "رسالة وسائط"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__body
+msgid "Message Body"
+msgstr "محتوى الرسالة"
+
+#. module: TAG_whats_HR
+#: model:ir.ui.menu,name:TAG_whats_HR.adv_whatsapp_out_menu
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__next_try
+msgid "Next Try"
+msgstr "المحاولة القادمة"
+
+#. module: TAG_whats_HR
+#: model:ir.model,name:TAG_whats_HR.model_hr_payslip
+msgid "Pay Slip"
+msgstr "إيصال الدفع"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields.selection,name:TAG_whats_HR.selection__adv_whatsapp_out__status__pending
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__phone
+msgid "Phone"
+msgstr "الهاتف"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__phone
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.adv_whatsapp_out_formview
+msgid "Resend"
+msgstr "إعادة الإرسال"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.whatsapp_composer_view_form
+msgid "Send"
+msgstr "إرسال"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.hr_payslip_form_inherit_whatsapp
+msgid "Send WhatsApp"
+msgstr "إرسال عبر واتساب"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.hr_payslip_form_inherit_whatsapp
+msgid "Send WhatsApp PDF"
+msgstr "إرسال إيصال PDF عبر واتساب"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.whatsapp_composer_view_form
+msgid "Send by WhatsApp"
+msgstr "إرسال بواسطة واتساب"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields.selection,name:TAG_whats_HR.selection__adv_whatsapp_out__status__sent
+msgid "Sent"
+msgstr "تم الإرسال"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__status
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.adv_whatsapp_out_treeview
+msgid "Status"
+msgstr "الحالة"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.adv_whatsapp_out_formview
+msgid "Technical information"
+msgstr "معلومات تقنية"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields.selection,name:TAG_whats_HR.selection__adv_whatsapp_out__type__text
+msgid "Text Message"
+msgstr "رسالة نصية"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.actions.act_window,help:TAG_whats_HR.adv_whatsapp_out_action
+msgid "There are no WhatsApp messages to show."
+msgstr "لا توجد رسائل واتساب لعرضها."
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_adv_whatsapp_out__type
+msgid "Type"
+msgstr "النوع"
+
+#. module: TAG_whats_HR
+#: model:ir.model,name:TAG_whats_HR.model_whatsapp_composer
+msgid "WhatsApp Message Composer"
+msgstr "محرر رسائل واتساب"
+
+#. module: TAG_whats_HR
+#: model:ir.model,name:TAG_whats_HR.model_adv_whatsapp_out
+msgid "WhatsApp out message"
+msgstr "رسالة صادرة عبر واتساب"
+
+#. module: TAG_whats_HR
+#: model:ir.actions.server,name:TAG_whats_HR.ir_cron_send_pending_whatsapp_ir_actions_server
+msgid "WhatsApp: Send Pending Messages"
+msgstr "واتساب: إرسال الرسائل المعلقة"
+
+#. module: TAG_whats_HR
+#: model:ir.actions.act_window,name:TAG_whats_HR.adv_whatsapp_out_action
+msgid "Whatsapp Messages"
+msgstr "رسائل واتساب"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.adv_whatsapp_out_formview
+msgid "Whatsapp Notification"
+msgstr "إشعار واتساب"
+
+#. module: TAG_whats_HR
+#: model:ir.ui.menu,name:TAG_whats_HR.adv_whatsapp_notifications_menu
+msgid "Whatsapp Notifications"
+msgstr "إشعارات واتساب"
+
+#. module: TAG_whats_HR
+#: model:ir.model.fields,field_description:TAG_whats_HR.field_whatsapp_composer__attachment_id
+msgid "attachment"
+msgstr "مرفق"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.whatsapp_composer_view_form
+msgid "cancel"
+msgstr "إلغاء"
+
+#. module: TAG_whats_HR
+#: model_terms:ir.ui.view,arch_db:TAG_whats_HR.adv_whatsapp_out_treeview
+msgid "creation date"
+msgstr "تاريخ الإنشاء"

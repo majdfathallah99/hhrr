@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- 1. القوائم الرئيسية -->
+    <menuitem
+        id="adv_root_menu"
+        name="Adv Notifications"
+        sequence="99"
+        web_icon="TAG_whats,static/description/icon.png"/>
+
+    <menuitem
+        id="adv_whatsapp_notifications_menu"
+        name="Whatsapp Notifications"
+        parent="adv_root_menu"
+        sequence="10"/>
+
+    <!-- 2. تعريف عرض القائمة (List/Tree View) -->
+    <record id="adv_whatsapp_out_treeview" model="ir.ui.view">
+        <field name="name">adv.whatsapp.out.list</field>
+        <field name="model">adv.whatsapp.out</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="status == 'sent'" decoration-warning="status == 'pending'" decoration-danger="status == 'failed'">
+                <field name="create_date" string="creation date"/>
+                <field name="phone"/>
+                <field name="body" string="Body"/>
+                <field name="status" string="Status"/>
+                <field name="last_error" string="Last error" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- 3. تعريف عرض النموذج (Form View) متوافق مع Odoo 17 -->
+    <record id="adv_whatsapp_out_formview" model="ir.ui.view">
+        <field name="name">adv.whatsapp.out.form</field>
+        <field name="model">adv.whatsapp.out</field>
+        <field name="arch" type="xml">
+            <form string="Whatsapp Notification">
+                <header>
+                     <button name="action_send_whatsapp" type="object" string="Resend" class="btn-primary" invisible="status == 'sent'"/>
+                     <field name="status" widget="statusbar" statusbar_visible="pending,sent,failed"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="media" filename="media_filename" invisible="type == 'text'"/>
+                            <field name="media_filename" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                         <field name="body"/>
+                    </group>
+                    <group string="Technical information" groups="base.group_system">
+                        <field name="attempts"/>
+                        <field name="next_try"/>
+                        <field name="last_error"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- 4. تعريف الإجراء (Action) -->
+    <record id="adv_whatsapp_out_action" model="ir.actions.act_window">
+        <field name="name">Whatsapp Messages</field>
+        <field name="res_model">adv.whatsapp.out</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There are no WhatsApp messages to show.
+            </p>
+        </field>
+    </record>
+
+    <!-- 5. ربط الإجراء بالقائمة -->
+    <menuitem
+        id="adv_whatsapp_out_menu"
+        name="Messages"
+        parent="adv_whatsapp_notifications_menu"
+        action="adv_whatsapp_out_action"
+        sequence="10"/>
+
+</odoo>

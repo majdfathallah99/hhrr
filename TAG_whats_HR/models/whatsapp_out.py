@@ -8,7 +8,7 @@ from datetime import timedelta
 
 API_URL = "https://www.wasenderapi.com/api/send-message"
 UPLOAD_URL = "https://www.wasenderapi.com/api/upload"
-HARDCODED_API_KEY = "f491316cf604e6f33977f903aaa814439ad1f9e5bc8a19b82aa6c2a3a089d996"
+HARDCODED_API_KEY = "e5f210075257b7dbb340a5214b3309734c5a74f56e3aba033a2d941ecbd7289f"
 
 class WhatsappOut(models.Model):
     _name = 'adv.whatsapp.out'

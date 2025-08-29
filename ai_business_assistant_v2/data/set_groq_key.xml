@@ -1,0 +1,12 @@
+<odoo noupdate="0">
+  <data>
+    <record id="ai_param_enabled" model="ir.config_parameter">
+      <field name="key">ai_business_assistant.ai_enabled</field>
+      <field name="value">True</field>
+    </record>
+    <record id="ai_param_api_key" model="ir.config_parameter">
+      <field name="key">ai_business_assistant.ai_api_key</field>
+      <field name="value">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</field>
+    </record>
+  </data>
+</odoo>

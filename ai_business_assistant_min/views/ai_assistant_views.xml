@@ -1,0 +1,47 @@
+
+<odoo>
+    <!-- App tile opens the plain page -->
+    <record id="action_ai_assistant_app" model="ir.actions.act_url">
+        <field name="name">AI Assistant</field>
+        <field name="type">ir.actions.act_url</field>
+        <field name="url">/ai_assistant_plain</field>
+        <field name="target">self</field>
+    </record>
+    <menuitem id="menu_ai_app_root" name="AI Assistant" action="action_ai_assistant_app" sequence="20"/>
+
+    <!-- Logs -->
+    <record id="action_ai_assistant_log" model="ir.actions.act_window">
+        <field name="name">AI Assistant Logs</field>
+        <field name="res_model">ai.assistant.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_ai_logs" name="Logs" parent="menu_ai_app_root" action="action_ai_assistant_log" sequence="30"/>
+
+    <!-- Settings form (standalone) -->
+    <record id="view_ai_res_config_settings_form" model="ir.ui.view">
+        <field name="name">ai.res.config.settings.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="arch" type="xml">
+            <form string="AI Business Assistant Settings">
+                <sheet>
+                    <group string="Provider">
+                        <field name="ai_enabled"/>
+                        <field name="ai_provider"/>
+                        <field name="ai_model"/>
+                        <field name="ai_api_key" password="True"/>
+                        <field name="ai_base_url"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_ai_res_config_settings" model="ir.actions.act_window">
+        <field name="name">AI Assistant Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_ai_res_config_settings_form"/>
+        <field name="target">current</field>
+        <field name="context">{}</field>
+    </record>
+    <menuitem id="menu_ai_settings" name="Settings" parent="menu_ai_app_root" action="action_ai_res_config_settings" sequence="10"/>
+</odoo>

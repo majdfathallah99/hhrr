@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="voice_page" name="AI Assistant Voice" inherit_id="website.layout">
+    <xpath expr="//main" position="inside">
+      <section class="container mt-4">
+        <h1>AI Business Assistant — Voice</h1>
+        <p class="text-muted">Hold the mic and speak. I’ll answer and speak back.</p>
+
+        <div id="log" style="height:280px;overflow:auto;border:1px solid #ddd;border-radius:8px;padding:10px;margin-bottom:12px;background:#fff;"></div>
+
+        <div class="d-flex gap-2">
+          <input id="textInput" class="form-control" placeholder="Or type here and press Send"/>
+          <button id="sendBtn" class="btn btn-primary">Send</button>
+          <button id="micBtn" class="btn btn-secondary">🎤 Hold to talk</button>
+        </div>
+
+        <small class="text-muted d-block mt-2" id="supportNote">
+          Voice uses your browser’s Web Speech API (best in Chrome/Edge desktop).
+        </small><script type="text/javascript"><![CDATA[
+  (function () {
+    const logEl = document.getElementById('log');
+    const micBtn = document.getElementById('micBtn');
+    const sendBtn = document.getElementById('sendBtn');
+    const input  = document.getElementById('textInput');
+
+    function addLine(who, text) {
+      const el = document.createElement('div');
+      el.style.whiteSpace = 'pre-wrap';
+      el.innerHTML = '<strong>' + who + ':</strong> ' + (text || '(empty)');
+      logEl.appendChild(el);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    async function speak(text) {
+      try {
+        if (!window.speechSynthesis) return;
+        const u = new SpeechSynthesisUtterance(text);
+        u.rate = 1.0; u.pitch = 1.0;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      } catch(e) {}
+    }
+
+    async function sendMessage(msg) {
+      if (!msg || !msg.trim()) return;
+      addLine('You', msg);
+      input.value = '';
+      try {
+        const r = await fetch('/ai_assistant/query_http', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({message: msg})
+        });
+        const data = await r.json();
+        const result = (data && data.result) || {};
+        const text = result.text || result.error || 'No response';
+        addLine('Assistant', text);
+        speak(text);
+      } catch (e) {
+        addLine('Assistant', 'Network or server error.');
+      }
+    }
+
+    sendBtn.addEventListener('click', () => sendMessage(input.value));
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(input.value); });
+
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let rec = SR ? new SR() : null;
+    if (!rec) {
+      micBtn.disabled = true;
+      micBtn.title = 'Speech recognition not supported in this browser';
+      const n = document.getElementById('supportNote');
+      if (n) n.textContent = 'Speech recognition not supported in this browser. Use Chrome/Edge desktop.';
+    } else {
+      rec.continuous = false;
+      rec.interimResults = true;
+      rec.lang = (navigator.language || 'en-US');
+
+      let finalText = '';
+      rec.onresult = (evt) => {
+        let interim = '';
+        for (let i = evt.resultIndex; i < evt.results.length; ++i) {
+          const t = evt.results[i][0].transcript;
+          if (evt.results[i].isFinal) finalText += t;
+          else interim += t;
+        }
+        if (interim) {
+          if (logEl.lastChild && logEl.lastChild.dataset && logEl.lastChild.dataset.tmp === '1') {
+            logEl.lastChild.innerHTML = '<strong>You (speaking)…</strong> ' + interim;
+          } else {
+            const el = document.createElement('div');
+            el.dataset.tmp = '1';
+            el.innerHTML = '<strong>You (speaking)…</strong> ' + interim;
+            logEl.appendChild(el);
+            logEl.scrollTop = logEl.scrollHeight;
+          }
+        }
+      };
+      rec.onend = () => {
+        micBtn.textContent = '🎤 Hold to talk';
+        if (logEl.lastChild && logEl.lastChild.dataset && logEl.lastChild.dataset.tmp === '1') {
+          logEl.removeChild(logEl.lastChild);
+        }
+        if (finalText.trim()) sendMessage(finalText.trim());
+        finalText = '';
+      };
+      rec.onerror = () => { micBtn.textContent = '🎤 Hold to talk'; };
+
+      micBtn.addEventListener('mousedown', () => {
+        try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch(e){}
+        micBtn.textContent = '🔴 Listening… (release to send)';
+        try { rec.start(); } catch(e){}
+      });
+      ['mouseup','mouseleave','touchend','touchcancel'].forEach(evt =>
+        micBtn.addEventListener(evt, () => { try { rec.stop(); } catch(e){} })
+      );
+      micBtn.addEventListener('touchstart', (e) => { e.preventDefault(); micBtn.dispatchEvent(new Event('mousedown')); }, {passive:false});
+    }
+  })();
+]]></script>
+
+      </section>
+    </xpath>
+
+    <!-- We DON'T add t-call-assets here; website.layout already loads assets. -->
+</template>
+</odoo>

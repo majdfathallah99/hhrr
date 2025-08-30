@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ai_voice.SystrayVoiceButton" owl="1">
+        <div class="o_ai_voice_systray" t-att-class="state.listening ? 'listening' : ''" title="Voice Chat" t-on-click="onClick">
+            <i class="fa" t-att-class="state.listening ? 'fa-microphone-slash' : 'fa-microphone'"></i>
+        </div>
+    </t>
+
+    <t t-name="ai_voice.VoiceDialog" owl="1">
+        <div class="o_dialog_container">
+            <div class="o_dialog">
+                <div class="o_dialog_header">
+                    <h3>AI Voice Chat</h3>
+                    <button class="btn btn-link" t-on-click="close"><i class="fa fa-times"/></button>
+                </div>
+                <div class="o_dialog_body">
+                    <div class="o_ai_voice_status">
+                        <span t-esc="state.status"/>
+                    </div>
+                    <div class="o_ai_voice_transcript">
+                        <label>Transcript</label>
+                        <textarea t-model="state.transcript" class="form-control" rows="3"/>
+                    </div>
+                    <div class="o_ai_voice_reply mt-2">
+                        <label>Assistant</label>
+                        <textarea t-model="state.reply" class="form-control" rows="3"/>
+                    </div>
+                </div>
+                <div class="o_dialog_footer d-flex gap-2">
+                    <button class="btn btn-secondary" t-on-click="toggleListen">
+                        <i class="fa" t-att-class="state.listening ? 'fa-stop' : 'fa-microphone'"/> 
+                        <t t-esc="state.listening ? 'Stop' : 'Talk'"/>
+                    </button>
+                    <button class="btn btn-primary" t-on-click="sendNow">
+                        <i class="fa fa-paper-plane"/> Send
+                    </button>
+                    <button class="btn btn-light" t-on-click="speakReply">
+                        <i class="fa fa-volume-up"/> Play Reply
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

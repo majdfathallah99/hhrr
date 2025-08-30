@@ -1,0 +1,55 @@
+<odoo>
+  <record id="view_res_config_settings_ai_voice_inherit" model="ir.ui.view">
+    <field name="name">res.config.settings.ai.voice.inherit</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base_setup.view_res_config_settings"/>
+    <field name="arch" type="xml">
+      <xpath expr="//div[@id='settings']" position="inside">
+        <div class="app_settings_block" data-key="ai_voice_block" string="AI Voice Assistant">
+          <h2>AI Voice Assistant</h2>
+          <div class="row mt16 o_setting_box">
+            <div class="col-12 col-lg-6">
+              <div class="o_setting_left_pane">
+                <field name="ai_voice_enabled"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="ai_voice_enabled"/>
+                <div class="text-muted">Enable/disable the voice assistant UI and API calls.</div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="o_setting_left_pane">
+                <field name="ai_voice_model"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="ai_voice_model"/>
+                <div class="text-muted">Example: llama-3.1-8b-instant (Groq), gpt-4o-mini, etc.</div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="o_setting_left_pane">
+                <field name="ai_voice_base_url"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="ai_voice_base_url"/>
+                <div class="text-muted">OpenAI-compatible base URL (e.g., https://api.groq.com/openai/v1)</div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="o_setting_left_pane">
+                <field name="ai_voice_api_key" password="True"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="ai_voice_api_key"/>
+                <div class="text-muted">Keep keys out of XML. Store here or via env-var init script.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </xpath>
+    </field>
+  </record>
+</odoo>

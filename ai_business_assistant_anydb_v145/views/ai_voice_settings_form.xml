@@ -1,0 +1,21 @@
+<odoo>
+    <record id="ai_voice_res_config_view_form" model="ir.ui.view">
+        <field name="name">ai.voice.res.config.settings.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="arch" type="xml">
+            <form string="AI Voice Chat Settings">
+                <sheet>
+                    <group string="AI Voice Chat">
+                        <group>
+                            <field name="ai_voice_chat_endpoint"/>
+                            <field name="ai_voice_api_key" password="True"/>
+                            <field name="ai_voice_api_header_name"/>
+                            <field name="ai_voice_model_hint"/>
+                            <field name="ai_voice_temperature"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

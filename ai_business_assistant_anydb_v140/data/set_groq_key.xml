@@ -1,0 +1,12 @@
+<odoo noupdate="1">
+  <data>
+    <function model="ir.config_parameter" name="set_param">
+      <value eval="'ai_business_assistant.ai_enabled'"/>
+      <value eval="'True'"/>
+    </function>
+    <function model="ir.config_parameter" name="set_param">
+      <value eval="'ai_business_assistant.ai_api_key'"/>
+      <value eval="'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'"/>
+    </function>
+  </data>
+</odoo>

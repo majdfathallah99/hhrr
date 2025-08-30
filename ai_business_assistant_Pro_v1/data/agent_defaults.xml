@@ -1,0 +1,8 @@
+<odoo noupdate="1">
+  <data>
+    <function model="ir.config_parameter" name="set_param">
+      <value eval="'ai_business_assistant.superuser'"/>
+      <value eval="'False'"/>
+    </function>
+  </data>
+</odoo>

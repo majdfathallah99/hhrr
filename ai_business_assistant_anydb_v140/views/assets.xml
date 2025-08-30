@@ -1,8 +1,0 @@
-<odoo>
-    <template id="assets_backend" inherit_id="web.assets_backend" name="AI Voice Assets">
-        <xpath expr="." position="inside">
-            <link rel="stylesheet" type="text/scss" href="/ai_business_assistant_anydb_v116/static/src/scss/voice.scss"/>
-            <script type="module" src="/ai_business_assistant_anydb_v116/static/src/js/voice_systray.js"/>
-        </xpath>
-    </template>
-</odoo>

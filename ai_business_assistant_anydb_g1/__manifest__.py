@@ -1,0 +1,16 @@
+{
+    'name': 'AI Business Assistant (Any DB) + Live Voice',
+    'summary': 'AI assistant + Live Voice Chat (WebRTC) with admin settings (API, STUN/TURN).',
+    'version': '17.0.3.2',
+    'author': 'You + ChatGPT',
+    'website': 'https://example.com',
+    'category': 'Productivity',
+    'license': 'LGPL-3',
+    'depends': ['web', 'bus', 'mail'],
+    'data': ['data/ai_app_menu.xml', 'data/set_groq_defaults.xml', 'data/set_groq_key.xml', 'security/ir.model.access.csv', 'views/ai_assistant_views.xml', 'views/ai_voice_views.xml'],
+    'assets': {'web.assets_backend': ['static/src/js/voice_chat_client.js', 'static/src/scss/voice.scss'], 'web.assets_qweb': ['static/src/xml/voice_templates.xml']},
+    'application': True,
+    'installable': True,
+    'post_init_hook': 'post_init_hook',
+    'uninstall_hook': 'uninstall_hook',
+}

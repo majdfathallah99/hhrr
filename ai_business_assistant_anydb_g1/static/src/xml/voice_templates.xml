@@ -1,0 +1,44 @@
+
+<templates id="template" xml:space="preserve">
+    <t t-name="ai_voice.VoiceClient">
+        <div class="ai-voice-wrapper">
+            <div class="ai-voice-header">
+                <h3>Live Voice Chat</h3>
+                <div class="ai-voice-controls">
+                    <button class="btn btn-primary" t-on-click="openRoom" t-if="!state.joined">Join</button>
+                    <button class="btn" t-on-click="toggleMute" t-if="state.joined">
+                        <t t-esc="state.isMuted ? 'Unmute' : 'Mute'"/>
+                    </button>
+                </div>
+            </div>
+            <div class="ai-voice-body">
+                <div class="ai-voice-card">
+                    <div class="ai-voice-me">
+                        <h4>Your Mic</h4>
+                        <audio t-ref="myaudio" t-att-src="state.myStream ? URL.createObjectURL(state.myStream) : null" autoplay="true" muted="true"></audio>
+                        <div class="tag" t-esc="state.isMuted ? 'Muted' : 'Live'"/>
+                    </div>
+                    <div class="ai-voice-peers">
+                        <h4>Participants</h4>
+                        <t t-foreach="Object.keys(state.streams)" t-as="uid">
+                            <div class="peer">
+                                <div class="name" t-esc="state.users[uid] or ('User ' + uid)"/>
+                                <audio t-if="state.streams[uid]" t-attf-id="audio-#{uid}" autoplay="true"></audio>
+                                <t t-set="stream" t-value="state.streams[uid]"/>
+                                <t t-js=""
+                                    >var el = document.getElementById('audio-' + uid);
+                                     if (el && el.srcObject !== stream) { el.srcObject = stream; el.play(); }</t>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <div class="ai-voice-log">
+                    <h5>Log</h5>
+                    <ul>
+                        <li t-foreach="state.log" t-as="l"><t t-esc="l"/></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

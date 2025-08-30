@@ -1,0 +1,58 @@
+
+<odoo>
+    <record id="action_ai_assistant_app" model="ir.actions.act_url">
+        <field name="name">AI Assistant</field>
+        <field name="type">ir.actions.act_url</field>
+        <field name="url">/ai_assistant_plain</field>
+        <field name="target">self</field>
+    </record>
+    <menuitem id="menu_ai_app_root" name="AI Assistant" action="action_ai_assistant_app" sequence="20"/>
+
+    <record id="action_ai_logs" model="ir.actions.act_window">
+        <field name="name">Logs (Server)</field>
+        <field name="res_model">ir.logging</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('name','=','ai.assistant')]</field>
+    </record>
+    <menuitem id="menu_ai_logs" name="Logs" parent="menu_ai_app_root" action="action_ai_logs" sequence="30"/>
+
+    <!-- Standalone settings form -->
+    <record id="view_ai_config_form" model="ir.ui.view">
+        <field name="name">ai.config.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="arch" type="xml">
+            <form string="AI Business Assistant Settings">
+                <sheet>
+                    <group>
+                        <group string="AI Business Assistant">
+                            <field name="ai_enabled"/>
+                            <field name="ai_superuser_mode"/>
+                            <field name="ai_provider"/>
+                            <field name="ai_model"/>
+                            <field name="ai_api_key" password="True"/>
+                            <field name="ai_base_url"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Save" type="object" name="execute" class="btn-primary"/>
+                        or
+                        <button string="Discard" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_config" model="ir.actions.act_window">
+        <field name="name">AI Business Assistant</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_ai_config_form"/>
+        <field name="target">current</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Settings app submenu -->
+    <menuitem id="menu_ai_settings_root" name="AI Business Assistant" parent="base.menu_config" sequence="60"/>
+    <menuitem id="menu_ai_settings_config" name="Configuration" parent="menu_ai_settings_root" action="action_ai_config" sequence="10"/>
+</odoo>

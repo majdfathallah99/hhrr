@@ -1,0 +1,32 @@
+.o_ai_voice_systray {
+  padding: 6px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.o_ai_voice_systray i { font-size: 16px; }
+.o_ai_voice_systray.listening {
+  background: rgba(220, 38, 38, 0.12);
+  border-radius: 6px;
+}
+.o_ai_voice_systray.listening i { color: #dc2626; animation: pulse 1s infinite; }
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.o_dialog_container {
+  position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.35);
+  display: flex; align-items: center; justify-content: center;
+}
+.o_dialog {
+  background: #fff; width: 680px; max-width: 92vw; border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,.18);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.o_dialog_header { padding: 12px 16px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; }
+.o_dialog_body { padding: 16px; display: flex; gap: 12px; flex-direction: column; }
+.o_dialog_footer { padding: 12px 16px; border-top: 1px solid #e5e7eb; }
+.o_ai_voice_status { color: #6b7280; font-size: 13px; }

@@ -1,0 +1,189 @@
+
+<odoo>
+    <!-- Client Action -->
+    <record id="action_open_voice_chat" model="ir.actions.client">
+        <field name="name">Live Voice Chat</field>
+        <field name="tag">ai_voice_chat_client</field>
+    </record>
+
+    <!-- Put a button on the module home (a top-level menu) -->
+    <menuitem id="menu_ai_voice_root"
+              name="Live Voice Chat"
+              parent="base.menu_custom" sequence="10"
+              action="action_open_voice_chat"
+              groups="base.group_user"/>
+
+    <!-- Voice Room model simple tree/form -->
+    <record id="view_ai_voice_room_tree" model="ir.ui.view">
+        <field name="name">ai.voice.room.tree</field>
+        <field name="model">ai.voice.room</field>
+        <field name="arch" type="xml">
+            <tree string="Voice Rooms">
+                <field name="name"/>
+                <field name="room_key"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ai_voice_room_form" model="ir.ui.view">
+        <field name="name">ai.voice.room.form</field>
+        <field name="model">ai.voice.room</field>
+        <field name="arch" type="xml">
+            <form string="Voice Room">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="room_key" readonly="1"/>
+                        <field name="active"/>
+                        <field name="linked_model"/>
+                        <field name="linked_res_id"/>
+                        <field name="notes"/>
+                        <field name="participant_ids" widget="many2many_tags"/>
+                    </group>
+                    <footer>
+                        <button string="Open Live Voice" type="action"
+                                context="{'default_room_key': room_key}"
+                                class="btn-primary"
+                                name="%(action_open_voice_chat)d"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_voice_room" model="ir.actions.act_window">
+        <field name="name">Voice Rooms</field>
+        <field name="res_model">ai.voice.room</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_ai_voice_rooms" name="Voice Rooms" parent="menu_ai_voice_root" action="action_ai_voice_room" sequence="20"/>
+
+    <!-- Settings -->
+    <record id="res_config_settings_view_form_ai_voice" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.ai.voice</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.view_res_config_settings"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block o_app" data-key="ai_voice" data-string="Live Voice Chat" string="Live Voice Chat">
+                    <h2>Live Voice Chat</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="ai_voice_enabled" groups="base.group_system"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="ai_voice_enabled"/>
+                                <div class="text-muted">Enable built-in WebRTC voice rooms with Odoo Bus signaling.</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="ai_voice_stun_servers" placeholder="stun:stun.l.google.com:19302" groups="base.group_system"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="ai_voice_stun_servers"/>
+                                <div class="text-muted">Comma separated STUN servers.</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="ai_voice_turn_servers" groups="base.group_system"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="ai_voice_turn_servers"/>
+                                <div class="text-muted">JSON list for TURN servers (recommended for NAT traversal).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+<div class="app_settings_block o_app" data-key="ai_api" data-string="AI Assistant (API)" string="AI Assistant (API)">
+    <h2>AI Assistant (API)</h2>
+    <div class="row mt16 o_settings_container">
+        <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+                <field name="ai_api_provider" groups="base.group_system"/>
+            </div>
+            <div class="o_setting_right_pane">
+                <label for="ai_api_provider"/>
+                <div class="text-muted">Choose your provider or use Custom.</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+                <field name="ai_api_base_url" placeholder="(use provider default)" groups="base.group_system"/>
+            </div>
+            <div class="o_setting_right_pane">
+                <label for="ai_api_base_url"/>
+                <div class="text-muted">Optional override. Example (Groq): https://api.groq.com/openai/v1</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+                <field name="ai_api_key" password="True" groups="base.group_system"/>
+            </div>
+            <div class="o_setting_right_pane">
+                <label for="ai_api_key"/>
+                <div class="text-muted">Your API key is saved in System Parameters.</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+                <field name="ai_api_model" placeholder="llama-3.1-70b-versatile / gpt-4o ..." groups="base.group_system"/>
+            </div>
+            <div class="o_setting_right_pane">
+                <label for="ai_api_model"/>
+                <div class="text-muted">Default model used by the assistant.</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+                <field name="ai_api_temperature" groups="base.group_system"/>
+            </div>
+            <div class="o_setting_right_pane">
+                <label for="ai_api_temperature"/>
+                <div class="text-muted">Higher = more creative, lower = more deterministic.</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+                <field name="ai_api_max_tokens" groups="base.group_system"/>
+            </div>
+            <div class="o_setting_right_pane">
+                <label for="ai_api_max_tokens"/>
+                <div class="text-muted">Cap output length.</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+                <field name="ai_api_timeout" groups="base.group_system"/>
+            </div>
+            <div class="o_setting_right_pane">
+                <label for="ai_api_timeout"/>
+                <div class="text-muted">HTTP timeout for requests.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </xpath>
+        </field>
+    </record>
+
+    <!-- Sequence -->
+    <record id="seq_ai_voice_room" model="ir.sequence">
+        <field name="name">AI Voice Room</field>
+        <field name="code">ai.voice.room</field>
+        <field name="prefix">VROOM-</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

@@ -1,0 +1,19 @@
+<odoo>
+    <record id="action_open_ai_voice_settings" model="ir.actions.act_window">
+        <field name="name">AI Voice Chat Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <record id="action_open_ai_voice_settings_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="ai_voice_res_config_view_form"/>
+        <field name="act_window_id" ref="action_open_ai_voice_settings"/>
+    </record>
+
+    <menuitem id="menu_ai_voice_root" name="AI Voice" parent="base.menu_administration" sequence="98"/>
+    <menuitem id="menu_ai_voice_settings" name="Settings" parent="menu_ai_voice_root"
+              action="action_open_ai_voice_settings" sequence="1" groups="base.group_system"/>
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+    <template id="ui_page" name="Grok Assistant UI (No JSON/CSS)">
+        <t t-call="web.layout">
+            <div class="container">
+                <h2>Grok Assistant Pro</h2>
+                <p t-esc="'Welcome, %s' % user_name"/>
+                <p>Minimal interface without JavaScript/JSON/CSS. Type your message and submit.</p>
+
+                <form action="/grok/ui" method="post">
+                    <label for="msg">Message</label>
+                    <input type="text" id="msg" name="message" t-att-value="user_message"/>
+                    <button type="submit">Send</button>
+                </form>
+
+                <t t-if="reply">
+                    <h3>Assistant Reply</h3>
+                    <pre t-esc="reply"/>
+                </t>
+
+                <p>Session: <t t-esc="session_id"/></p>
+            </div>
+        </t>
+    </template>
+</odoo>

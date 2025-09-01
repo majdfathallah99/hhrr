@@ -1,0 +1,11 @@
+<odoo>
+    <template id="config_page" name="Grok Assistant Settings (Minimal)">
+        <t t-call="web.layout">
+            <div class="container">
+                <h2>Grok Assistant Settings</h2>
+                <p t-esc="'Hello, %s' % user_name"/>
+                <p>No JSON / No CSS build.</p>
+            </div>
+        </t>
+    </template>
+</odoo>

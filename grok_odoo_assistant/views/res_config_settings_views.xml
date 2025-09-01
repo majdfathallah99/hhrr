@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="res_config_settings_view_form_grok" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form.grok</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.view_res_config_settings"/>
+    <field name="arch" type="xml">
+      <xpath expr="//div[@id='settings']" position="inside">
+        <h2>Grok Assistant</h2>
+        <div class="row mt16 o_settings_container">
+          <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+              <field name="grok_enable_voice"/>
+            </div>
+            <div class="o_setting_right_pane">
+              <label for="grok_enable_voice"/>
+              <div class="text-muted">Enable simple voice chat UI (no CSS assets).</div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+              <field name="grok_api_key" password="True"/>
+            </div>
+            <div class="o_setting_right_pane">
+              <label for="grok_api_key"/>
+              <div class="text-muted">Store your x.ai API key securely (server-side).</div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+              <field name="grok_model"/>
+            </div>
+            <div class="o_setting_right_pane">
+              <label for="grok_model"/>
+              <div class="text-muted">e.g., grok-4-latest</div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 o_setting_box">
+            <div class="o_setting_left_pane">
+              <field name="grok_temperature"/>
+            </div>
+            <div class="o_setting_right_pane">
+              <label for="grok_temperature"/>
+              <div class="text-muted">Creativity (0 → deterministic)</div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-12 o_setting_box">
+            <div class="o_setting_left_pane">
+              <field name="grok_allowed_models"/>
+            </div>
+            <div class="o_setting_right_pane">
+              <label for="grok_allowed_models"/>
+              <div class="text-muted">Comma-separated model names the AI may create/read/write.</div>
+            </div>
+          </div>
+        </div>
+      </xpath>
+    </field>
+  </record>
+</odoo>

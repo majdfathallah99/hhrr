@@ -1,0 +1,6 @@
+.wrap{max-width:900px;margin:24px auto;font-family:system-ui,sans-serif}
+.row{display:flex;gap:8px}
+#text{flex:1;padding:10px}
+#send{padding:10px 14px}
+#log{margin-top:16px;list-style:decimal;padding-inline-start:20px}
+.tips{color:#555;margin:8px 0}

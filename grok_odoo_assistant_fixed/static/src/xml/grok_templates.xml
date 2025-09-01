@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="ui" name="Grok Assistant UI">
+    <t t-call="web.layout">
+      <div class="o_container">
+        <h1>Grok Assistant</h1>
+        <div>
+          <input type="hidden" id="grok_session_id" t-att-value="session_id"/>
+          <div>
+            <button id="grok_start_stop" type="button">Start Voice</button>
+            <label><input type="checkbox" id="grok_execute"/> Allow actions</label>
+          </div>
+          <div>
+            <input type="text" id="grok_text" placeholder="Type and press Send"/>
+            <button id="grok_send" type="button">Send</button>
+          </div>
+          <hr/>
+          <ul id="grok_messages"></ul>
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>

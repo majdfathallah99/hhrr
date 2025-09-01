@@ -1,0 +1,19 @@
+<odoo>
+    <record id="action_grok_open" model="ir.actions.act_url">
+        <field name="name">Open Assistant</field>
+        <field name="type">ir.actions.act_url</field>
+        <field name="url">/grok/ui</field>
+        <field name="target">current</field>
+    </record>
+
+    <record id="action_grok_config" model="ir.actions.act_url">
+        <field name="name">Grok Settings</field>
+        <field name="type">ir.actions.act_url</field>
+        <field name="url">/grok/config</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_grok_root" name="Grok Assistant" sequence="10"/>
+    <menuitem id="menu_grok_open" name="Open Assistant" parent="menu_grok_root" action="action_grok_open"/>
+    <menuitem id="menu_grok_config" name="Settings" parent="menu_grok_root" action="action_grok_config" groups="base.group_user"/>
+</odoo>

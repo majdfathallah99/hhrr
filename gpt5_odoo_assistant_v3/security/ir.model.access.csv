@@ -1,0 +1,6 @@
+
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gpt_thread_user,gpt.thread user,gpt5_odoo_assistant_v2.model_gpt_assistant_thread,gpt5_odoo_assistant_v2.group_gpt_assistant_user,1,1,1,0
+access_gpt_message_user,gpt.message user,gpt5_odoo_assistant_v2.model_gpt_assistant_message,gpt5_odoo_assistant_v2.group_gpt_assistant_user,1,0,0,0
+access_gpt_thread_manager,gpt.thread manager,gpt5_odoo_assistant_v2.model_gpt_assistant_thread,gpt5_odoo_assistant_v2.group_gpt_assistant_manager,1,1,1,1
+access_gpt_message_manager,gpt.message manager,gpt5_odoo_assistant_v2.model_gpt_assistant_message,gpt5_odoo_assistant_v2.group_gpt_assistant_manager,1,1,1,1

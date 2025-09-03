@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_open_board" model="ir.actions.act_window">
+        <field name="name">POS Packaged Delivery Board</field>
+        <field name="res_model">pos.packaged.card</field>
+        <field name="view_mode">kanban,list,form,search</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_pos_packaged_board_root"
+              name="POS Packaged Delivery"
+              action="action_open_board"
+              web_icon="pos_packaged_delivery_board,static/description/icon.svg"
+              sequence="5"/>
+</odoo>

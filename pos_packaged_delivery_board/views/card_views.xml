@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_packaged_card_kanban" model="ir.ui.view">
+        <field name="name">pos.packaged.card.kanban</field>
+        <field name="model">pos.packaged.card</field>
+        <field name="arch" type="xml">
+            <kanban create="false" class="o_kanban_small_column" default_group_by="state">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record oe_kanban_global_click">
+                            <field name="state" invisible="1"/>
+                            <div class="o_kanban_details">
+                                <strong><field name="product_id"/></strong>
+                                <div class="text-muted">
+                                    <span>Order: </span><field name="order_id"/>
+                                </div>
+                                <div class="text-muted">
+                                    <span>UoM: </span><field name="used_uom_id"/> · <span>Qty: </span><field name="qty"/>
+                                </div>
+                                <div class="text-muted">
+                                    <span>Date: </span><field name="date_order"/>
+                                </div>
+                            </div>
+                            <div class="o_kanban_footer mt-2">
+                                <t t-if="record.state and record.state.raw_value == 'new'">
+                                    <button type="object" name="action_confirm" class="oe_kanban_action oe_kanban_button btn-primary">
+                                        Confirm
+                                    </button>
+                                </t>
+                                <t t-if="record.state and record.state.raw_value == 'confirmed'">
+                                    <span class="badge badge-success">Confirmed</span>
+                                    <button type="object" name="action_reset" class="oe_kanban_action oe_kanban_button ms-2">
+                                        Reset
+                                    </button>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_pos_packaged_card_list" model="ir.ui.view">
+        <field name="name">pos.packaged.card.list</field>
+        <field name="model">pos.packaged.card</field>
+        <field name="arch" type="xml">
+            <list create="false" string="POS Packaged Cards">
+                <field name="state"/>
+                <field name="product_id"/>
+                <field name="used_uom_id"/>
+                <field name="qty"/>
+                <field name="order_id"/>
+                <field name="date_order"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_pos_packaged_card_form" model="ir.ui.view">
+        <field name="name">pos.packaged.card.form</field>
+        <field name="model">pos.packaged.card</field>
+        <field name="arch" type="xml">
+            <form string="POS Packaged Card">
+                <sheet>
+                    <group>
+                        <field name="state"/>
+                        <field name="product_id"/>
+                        <field name="default_uom_id"/>
+                        <field name="used_uom_id"/>
+                        <field name="qty"/>
+                        <field name="order_id"/>
+                        <field name="date_order"/>
+                        <field name="note"/>
+                    </group>
+                    <footer>
+                        <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state != 'new'"/>
+                        <button name="action_reset" type="object" string="Reset to New" class="btn-secondary" invisible="state != 'confirmed'"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pos_packaged_card_search" model="ir.ui.view">
+        <field name="name">pos.packaged.card.search</field>
+        <field name="model">pos.packaged.card</field>
+        <field name="arch" type="xml">
+            <search string="POS Packaged Cards">
+                <field name="product_id"/>
+                <field name="used_uom_id"/>
+                <field name="order_id"/>
+                <filter string="New Orders" name="new" domain="[('state','=','new')]"/>
+                <filter string="Confirmed Orders" name="confirmed" domain="[('state','=','confirmed')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_state" string="State" context="{'group_by':'state'}"/>
+                    <filter name="group_product" string="Product" context="{'group_by':'product_id'}"/>
+                    <filter name="group_uom" string="Used UoM" context="{'group_by':'used_uom_id'}"/>
+                    <filter name="group_order" string="Order" context="{'group_by':'order_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,88 @@
+
+<odoo>
+  <data>
+    <record id="view_gpt_assistant_thread_tree" model="ir.ui.view">
+      <field name="name">gpt.assistant.thread.tree</field>
+      <field name="model">gpt.assistant.thread</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="user_id"/>
+          <field name="state"/>
+          <field name="tool_calls"/>
+          <field name="tokens_in"/>
+          <field name="tokens_out"/>
+          <field name="sudo_mode"/>
+          <field name="allow_all_models"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_gpt_assistant_thread_form" model="ir.ui.view">
+      <field name="name">gpt.assistant.thread.form</field>
+      <field name="model">gpt.assistant.thread</field>
+      <field name="arch" type="xml">
+        <form string="Assistant Thread">
+          <header>
+            <button name="%(action_gpt_assistant_wizard)d" type="action" string="Ask" class="btn-primary"/>
+            <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="user_id" readonly="1"/>
+                <field name="temperature"/>
+                <field name="system_prompt"/>
+              </group>
+              <group string="Safety Gates">
+                <field name="sudo_mode" groups="gpt5_odoo_assistant_v1.group_gpt_assistant_superuser"/>
+                <field name="allow_all_models" groups="gpt5_odoo_assistant_v1.group_gpt_assistant_superuser"/>
+                <field name="allow_create"/>
+                <field name="allow_write"/>
+                <field name="allow_unlink"/>
+                <field name="allow_execute_kw"/>
+                <field name="allowed_model_ids" widget="many2many_tags" attrs="{'invisible':[('allow_all_models','=',True)]}"/>
+              </group>
+            </group>
+
+            <group string="Stats">
+              <field name="tool_calls" readonly="1"/>
+              <field name="tokens_in" readonly="1"/>
+              <field name="tokens_out" readonly="1"/>
+              <field name="last_reply" readonly="1" widget="text"/>
+            </group>
+
+            <notebook>
+              <page string="Messages">
+                <field name="message_ids" context="{'default_thread_id': active_id}">
+                  <tree editable="bottom">
+                    <field name="role"/>
+                    <field name="content"/>
+                    <field name="tool_name" readonly="1"/>
+                    <field name="tool_args" readonly="1"/>
+                    <field name="tool_response" readonly="1"/>
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_gpt_assistant_threads" model="ir.actions.act_window">
+      <field name="name">Assistant Threads</field>
+      <field name="res_model">gpt.assistant.thread</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_gpt_assistant_wizard" model="ir.actions.act_window">
+      <field name="name">Ask Assistant</field>
+      <field name="res_model">gpt.assistant.wizard</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+      <field name="context">{'default_thread_id': active_id}</field>
+    </record>
+  </data>
+</odoo>

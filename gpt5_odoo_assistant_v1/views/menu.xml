@@ -1,7 +1,0 @@
-
-<odoo>
-  <data>
-    <menuitem id="menu_gpt_root" name="AI Assistant" sequence="10"/>
-    <menuitem id="menu_gpt_threads" name="Threads" parent="menu_gpt_root" action="action_gpt_assistant_threads"/>
-  </data>
-</odoo>

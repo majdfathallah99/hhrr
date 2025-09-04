@@ -1,0 +1,48 @@
+<odoo>
+  <record id="res_config_settings_view_form_ai" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form.ai</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.view_res_config_settings"/>
+    <field name="arch" type="xml">
+      <xpath expr="//div[hasclass('settings')]" position="inside">
+        <div class="app_settings_block" data-string="GPT-5 Assistant" string="GPT-5 Assistant">
+          <h2>GPT-5 Assistant</h2>
+          <div class="row mt16 o_settings_container">
+            <div class="col-12 col-lg-6 o_setting_box">
+              <div class="o_setting_left_pane">
+                <field name="ai_api_key" password="True" placeholder="sk-..."/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="ai_api_key"/>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 o_setting_box">
+              <div class="o_setting_left_pane">
+                <field name="ai_model" placeholder="gpt-4o-mini"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="ai_model"/>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 o_setting_box">
+              <div class="o_setting_left_pane">
+                <field name="ai_base_url" placeholder="http://127.0.0.1:1234/v1"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="ai_base_url"/>
+              </div>
+            </div>
+            <div class="col-12 o_setting_box">
+              <div class="o_setting_left_pane">
+                <field name="ai_system_prompt"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="ai_system_prompt"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </xpath>
+    </field>
+  </record>
+</odoo>
